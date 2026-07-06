@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal - Vaidehi Silai Center</title>
+  <meta name="description" content="Generate certificates for students of Vaidehi Silai Center. Admin dashboard for registered course certifications.">
+  
+  <!-- Google Fonts: Playfair Display & Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header id="header">
+    <div class="nav-container">
+      <a href="index.html" class="logo-container">
+        <img src="vaidehisilaicenterlogo.jpeg" alt="Vaidehi Silai Center Logo" class="logo-img-nav">
+        <div class="logo-text-wrapper">
+          <span class="logo-text">Vaidehi Silai Center</span>
+          <span class="logo-subtext">MSME Govt. of India Registered</span>
+        </div>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle Navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="courses.html" class="nav-link">Courses</a></li>
+        <li><a href="about.html" class="nav-link">Our Instructor</a></li>
+        <li><a href="admin.html" class="nav-link active btn-nav-admin">Admin Portal</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Admin Form Section -->
+  <section class="admin-section section-padding">
+    <div class="container">
+      <div class="section-title-wrapper">
+        <h1 class="section-title">Certificate Authority Portal</h1>
+        <p class="section-subtitle">Official administrative console to draft and generate print-ready student completions.</p>
+      </div>
+
+      <div class="admin-card">
+        <h2 class="admin-card-title">Issue Course Certificate</h2>
+        <p class="admin-card-subtitle">
+          Ensure all credentials match the student's records. Generating will forward you to the dedicated landscape preview page.
+        </p>
+        
+        <form id="cert-form" onsubmit="event.preventDefault();">
+          <div class="form-grid">
+            
+            <!-- Student Full Name -->
+            <div class="form-group form-group-full">
+              <label for="student-name" class="form-label">Student's Full Name</label>
+              <input type="text" id="student-name" class="form-input" placeholder="e.g. Priya Sharma" value="Priya Sharma" required>
+            </div>
+
+            <!-- Course Selection -->
+            <div class="form-group">
+              <label for="course-name" class="form-label">Course Name</label>
+              <select id="course-name" class="form-select" required>
+                <option value="Basic Tailoring Course">Basic Tailoring Course</option>
+                <option value="Advanced Dress Designing" selected>Advanced Dress Designing</option>
+                <option value="Custom Course">-- Custom Course Name --</option>
+              </select>
+            </div>
+
+            <!-- Custom Course Name Input -->
+            <div class="form-group" id="custom-course-wrapper" style="display: none;">
+              <label for="custom-course" class="form-label">Enter Custom Course Name</label>
+              <input type="text" id="custom-course" class="form-input" placeholder="e.g. Boutique Management Masterclass">
+            </div>
+
+            <!-- Grade -->
+            <div class="form-group">
+              <label for="grade-secured" class="form-label">Grade Secured</label>
+              <select id="grade-secured" class="form-select" required>
+                <option value="A+" selected>A+ (Outstanding)</option>
+                <option value="A">A (Excellent)</option>
+                <option value="B">B (Good)</option>
+                <option value="C">C (Satisfactory)</option>
+              </select>
+            </div>
+
+            <!-- Start Date -->
+            <div class="form-group">
+              <label for="start-date" class="form-label">Start Date</label>
+              <input type="date" id="start-date" class="form-input" value="2025-10-01" required>
+            </div>
+
+            <!-- End Date -->
+            <div class="form-group">
+              <label for="end-date" class="form-label">End Date</label>
+              <input type="date" id="end-date" class="form-input" value="2026-03-31" required>
+            </div>
+          </div>
+
+          <button type="button" id="btn-generate-preview" class="btn btn-primary btn-generate">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Generate & Preview Certificate
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col-about">
+          <h4 style="display: flex; align-items: center; gap: 10px;">
+            <img src="vaidehisilaicenterlogo.jpeg" alt="Logo" style="height: 30px; border-radius: 50%; border: 1px solid var(--gold-metallic); background-color: var(--white);">
+            Vaidehi Silai Center
+          </h4>
+          <p>
+            An MSME government registered tailoring and design institute based in West Bengal, India. Dedicated to quality design education, sewing mastery, and business confidence.
+          </p>
+          <p><strong>Udyam Reg:</strong> UDYAM-WB-14-0221168</p>
+        </div>
+        <div class="footer-col-links">
+          <h4>Navigation</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html">Our Courses</a></li>
+            <li><a href="about.html">About Instructor</a></li>
+            <li><a href="admin.html">Admin Certification</a></li>
+          </ul>
+        </div>
+        <div class="footer-col-contact">
+          <h4>Contact & Location</h4>
+          <div class="contact-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Vaidehi Silai Center, West Bengal, India</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-envelope"></i>
+            <span>info@vaidehisilaicenter.com</span>
+          </div>
+          <div class="contact-item">
+            <i class="fa-solid fa-phone"></i>
+            <span>+91 98765 43210</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Vaidehi Silai Center. All Rights Reserved.</p>
+        <p>Registered under Ministry of Micro, Small & Medium Enterprises (Govt. of India)</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script Files -->
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

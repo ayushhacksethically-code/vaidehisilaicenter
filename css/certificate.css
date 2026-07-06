@@ -1,0 +1,559 @@
+/* ==========================================================================
+   CERTIFICATE VIEWER & PRINT-READY SPECIFIC STYLES
+   ========================================================================== */
+:root {
+  --primary-color: #0d2f1d;
+  --bg-cream: #f4ebe1;
+  --bg-light: #faf6f0;
+  --text-charcoal: #2c2c2c;
+  --text-muted: #666666;
+  --gold-metallic: #d4af37;
+  --gold-dark: #b89765;
+  --white: #ffffff;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --font-cursive: 'Alex Brush', cursive;
+  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Base Styles for Viewer Page */
+body.cert-viewer-body {
+  background-color: #2b3a32; /* Deep dark green background to make the certificate pop on screen */
+  color: var(--white);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Toolbar for Viewer */
+.cert-toolbar {
+  background-color: var(--primary-color);
+  border-bottom: 2px solid var(--gold-metallic);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cert-toolbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cert-toolbar-logo img {
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-metallic);
+  background-color: var(--white);
+}
+
+.cert-toolbar-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--bg-cream);
+  font-weight: 700;
+}
+
+.cert-toolbar-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.cert-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+}
+
+.cert-btn-back {
+  background-color: transparent;
+  color: var(--bg-cream);
+  border-color: rgba(244, 235, 225, 0.4);
+}
+
+.cert-btn-back:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: var(--bg-cream);
+}
+
+.cert-btn-print {
+  background-color: var(--gold-metallic);
+  color: var(--primary-color);
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+}
+
+.cert-btn-print:hover {
+  background-color: var(--white);
+  color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+/* Certificate Preview Workspace */
+.cert-workspace {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 24px;
+}
+
+/* Certificate viewport container: uses Container Queries to scale elements perfectly */
+.cert-viewport-wrapper {
+  width: 100%;
+  max-width: 1000px;
+  container-type: inline-size; /* Essential for cqw units */
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  background-color: var(--white);
+  overflow: hidden;
+}
+
+/* A4 Landscape Ratio: 1.414 (297 / 210) */
+.cert-card-preview {
+  width: 100%;
+  aspect-ratio: 297 / 210;
+  background-color: #fdfbf7;
+  border: 2cqw double var(--primary-color);
+  outline: 0.25cqw solid var(--gold-metallic);
+  outline-offset: -1.3cqw;
+  padding: 2.5cqw 4.5cqw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  color: var(--text-charcoal);
+  text-align: center;
+}
+
+/* Watermark pseudo-element */
+.cert-card-preview::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  background-image: url('../vaidehisilaicenterlogo.jpeg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Scalable Corner Ornaments */
+.cert-corner {
+  position: absolute;
+  width: 4.5cqw;
+  height: 4.5cqw;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.cert-corner-tl {
+  top: 1cqw;
+  left: 1cqw;
+}
+
+.cert-corner-tr {
+  top: 1cqw;
+  right: 1cqw;
+  transform: rotate(90deg);
+}
+
+.cert-corner-bl {
+  bottom: 1cqw;
+  left: 1cqw;
+  transform: rotate(-90deg);
+}
+
+.cert-corner-br {
+  bottom: 1cqw;
+  right: 1cqw;
+  transform: rotate(180deg);
+}
+
+/* Header */
+.cert-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.cert-logo {
+  height: 13.5cqw;
+  margin-bottom: 1cqw;
+  object-fit: contain;
+}
+
+.cert-msme {
+  font-size: 1.6cqw;
+  font-weight: 700;
+  color: var(--primary-color);
+  letter-spacing: 0.08cqw;
+  text-transform: uppercase;
+}
+
+.cert-divider-line {
+  width: 75cqw;
+  height: 0.2cqw;
+  background: linear-gradient(to right, transparent, var(--gold-metallic), transparent);
+  margin: 1.5cqw auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-divider-line::after {
+  content: '❖';
+  color: var(--primary-color);
+  background-color: #fdfbf7;
+  padding: 0 1.5cqw;
+  font-size: 1.8cqw;
+}
+
+/* Title */
+.cert-title {
+  font-family: var(--font-serif);
+  font-size: 4.5cqw;
+  font-weight: 800;
+  color: var(--primary-color);
+  letter-spacing: 0.2cqw;
+  text-transform: uppercase;
+  margin: 0.5cqw 0 1.5cqw 0;
+  z-index: 2;
+}
+
+/* Body Text */
+.cert-body {
+  font-size: 2.1cqw;
+  line-height: 1.7;
+  color: var(--text-charcoal);
+  z-index: 2;
+  max-width: 84cqw;
+  margin: 0 auto;
+}
+
+.cert-intro {
+  font-weight: 500;
+  font-style: italic;
+}
+
+.cert-student-name {
+  font-family: var(--font-serif);
+  font-size: 4.4cqw;
+  font-weight: 900;
+  color: var(--primary-color);
+  border-bottom: 0.15cqw solid var(--gold-metallic);
+  padding-bottom: 0.2cqw;
+  margin: 1cqw 0;
+  display: inline-block;
+  letter-spacing: 0.05cqw;
+}
+
+.cert-course-desc {
+  font-weight: 500;
+}
+
+.cert-course-name {
+  font-family: var(--font-serif);
+  font-size: 3.1cqw;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  margin: 0.6cqw 0;
+  letter-spacing: 0.05cqw;
+}
+
+.cert-dates-grade {
+  font-weight: 500;
+  margin-top: 0.8cqw;
+}
+
+.cert-dates-grade strong {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Footer Stamp & Signatures */
+.cert-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 2cqw;
+  margin-top: 2cqw;
+  z-index: 2;
+}
+
+.cert-stamp-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cert-stamp-svg {
+  width: 12.5cqw;
+  height: 12.5cqw;
+  max-width: 130px;
+  max-height: 130px;
+  filter: drop-shadow(0 2px 5px rgba(13, 47, 29, 0.1));
+}
+
+.cert-signature-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 23cqw;
+}
+
+.cert-signature-cursive {
+  font-family: var(--font-cursive);
+  font-size: 3.8cqw;
+  color: #0b1a30;
+  line-height: 1;
+  margin-bottom: 0.2cqw;
+  transform: rotate(-3deg);
+}
+
+.cert-sig-line {
+  width: 100%;
+  border-top: 0.12cqw solid #222222;
+  margin-bottom: 0.6cqw;
+}
+
+.cert-sig-title {
+  font-size: 1.5cqw;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cert-sig-subtitle {
+  font-size: 1.2cqw;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   STRICT PRINT STYLES - A4 LANDSCAPE
+   ========================================================================== */
+@media print {
+  /* Force landscape orientation */
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+
+  /* Reset standard body styling for print layout */
+  html, body.cert-viewer-body {
+    width: 297mm;
+    height: 210mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    overflow: hidden !important;
+  }
+
+  /* Hide navigation bar, footer and actions completely */
+  .cert-toolbar, .no-print {
+    display: none !important;
+  }
+
+  .cert-workspace {
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  /* Re-scope certificate container to fill physical A4 page exactly */
+  .cert-viewport-wrapper {
+    width: 297mm !important;
+    height: 210mm !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    overflow: hidden !important;
+  }
+
+  /* Fixed millimeter styling for printed elements to prevent layout shifts */
+  .cert-card-preview {
+    width: 297mm !important;
+    height: 210mm !important;
+    border: 6mm double #0d2f1d !important;
+    outline: 0.8mm solid #d4af37 !important;
+    outline-offset: -4mm !important;
+    padding: 8mm 12mm !important;
+    background-color: #fdfbf7 !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    position: relative !important;
+  }
+
+  /* Watermark transparency fix for physical printing */
+  .cert-card-preview::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 120mm !important;
+    height: 120mm !important;
+    background-image: url('../vaidehisilaicenterlogo.jpeg') !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    opacity: 0.05 !important;
+    z-index: 1 !important;
+    display: block !important;
+  }
+
+  /* Print sizing for Corner Ornaments */
+  .cert-corner {
+    width: 12mm !important;
+    height: 12mm !important;
+  }
+
+  .cert-corner-tl {
+    top: 3mm !important;
+    left: 3mm !important;
+  }
+
+  .cert-corner-tr {
+    top: 3mm !important;
+    right: 3mm !important;
+  }
+
+  .cert-corner-bl {
+    bottom: 3mm !important;
+    left: 3mm !important;
+  }
+
+  .cert-corner-br {
+    bottom: 3mm !important;
+    right: 3mm !important;
+  }
+
+  .cert-logo {
+    height: 36mm !important;
+    max-height: 36mm !important;
+    margin-bottom: 2mm !important;
+    display: block !important;
+  }
+
+  .cert-msme {
+    font-size: 4.8mm !important;
+    letter-spacing: 0.2mm !important;
+    color: #0d2f1d !important;
+  }
+
+  .cert-divider-line {
+    width: 220mm !important;
+    height: 0.6mm !important;
+    margin: 4mm auto !important;
+    background: linear-gradient(to right, transparent, #d4af37, transparent) !important;
+  }
+
+  .cert-divider-line::after {
+    font-size: 5.5mm !important;
+    padding: 0 4mm !important;
+    background-color: #fdfbf7 !important;
+  }
+
+  .cert-title {
+    font-size: 13mm !important;
+    letter-spacing: 0.6mm !important;
+    margin: 2mm 0 4mm 0 !important;
+    color: #0d2f1d !important;
+  }
+
+  .cert-body {
+    font-size: 6.2mm !important;
+    line-height: 1.8 !important;
+    max-width: 250mm !important;
+  }
+
+  .cert-student-name {
+    font-size: 13.5mm !important;
+    border-bottom: 0.5mm solid #d4af37 !important;
+    padding-bottom: 0.5mm !important;
+    margin: 3mm 0 !important;
+    color: #0d2f1d !important;
+  }
+
+  .cert-course-name {
+    font-size: 9.2mm !important;
+    margin: 2.5mm 0 !important;
+    color: #0d2f1d !important;
+  }
+
+  .cert-dates-grade {
+    margin-top: 2.5mm !important;
+  }
+
+  .cert-footer {
+    padding: 0 10mm !important;
+    margin-top: 6mm !important;
+  }
+
+  .cert-stamp-svg {
+    width: 32mm !important;
+    height: 32mm !important;
+  }
+
+  .cert-signature-container {
+    width: 70mm !important;
+  }
+
+  .cert-signature-cursive {
+    font-size: 10mm !important;
+    margin-bottom: 0.8mm !important;
+  }
+
+  .cert-sig-line {
+    border-top: 0.4mm solid #222222 !important;
+    margin-bottom: 1.5mm !important;
+  }
+
+  .cert-sig-title {
+    font-size: 4.5mm !important;
+  }
+
+  .cert-sig-subtitle {
+    font-size: 3.8mm !important;
+  }
+}
