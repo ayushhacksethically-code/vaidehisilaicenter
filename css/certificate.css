@@ -134,7 +134,7 @@ body.cert-viewer-body {
   border: 2cqw double var(--primary-color);
   outline: 0.25cqw solid var(--gold-metallic);
   outline-offset: -1.3cqw;
-  padding: 2.5cqw 4.5cqw;
+  padding: 2.2cqw 4.5cqw 1.8cqw 4.5cqw;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -154,16 +154,16 @@ body.cert-viewer-body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 35%;
-  height: auto;
-  aspect-ratio: 1 / 1;
+  width: 32cqw;
+  height: 32cqw;
   background-image: url('../vaidehisilaicenterlogo.jpeg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.05;
+  opacity: 0.04;
   pointer-events: none;
   z-index: 1;
+  display: block;
 }
 
 /* Scalable Corner Ornaments */
@@ -224,7 +224,7 @@ body.cert-viewer-body {
   width: 75cqw;
   height: 0.2cqw;
   background: linear-gradient(to right, transparent, var(--gold-metallic), transparent);
-  margin: 1.5cqw auto;
+  margin: 1cqw auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -246,7 +246,7 @@ body.cert-viewer-body {
   color: var(--primary-color);
   letter-spacing: 0.2cqw;
   text-transform: uppercase;
-  margin: 0.5cqw 0 1.5cqw 0;
+  margin: 0.5cqw 0 1cqw 0;
   z-index: 2;
 }
 
@@ -308,7 +308,7 @@ body.cert-viewer-body {
   justify-content: space-between;
   align-items: flex-end;
   padding: 0 2cqw;
-  margin-top: 2cqw;
+  margin-top: 1cqw;
   z-index: 2;
 }
 
