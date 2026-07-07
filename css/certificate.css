@@ -16,6 +16,10 @@
   --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Base Styles for Viewer Page */
 body.cert-viewer-body {
   background-color: #2b3a32; /* Deep dark green background to make the certificate pop on screen */
@@ -134,7 +138,7 @@ body.cert-viewer-body {
   border: 2cqw double var(--primary-color);
   outline: 0.25cqw solid var(--gold-metallic);
   outline-offset: -1.3cqw;
-  padding: 2.2cqw 4.5cqw 1.8cqw 4.5cqw;
+  padding: 3.5cqw 4.5cqw 3.5cqw 4.5cqw;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -414,7 +418,7 @@ body.cert-viewer-body {
     border: 6mm double #0d2f1d !important;
     outline: 0.8mm solid #d4af37 !important;
     outline-offset: -4mm !important;
-    padding: 8mm 12mm !important;
+    padding: 14mm 16mm !important;
     background-color: #fdfbf7 !important;
     box-sizing: border-box !important;
     display: flex !important;
@@ -431,13 +435,13 @@ body.cert-viewer-body {
     top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
-    width: 120mm !important;
-    height: 120mm !important;
+    width: 90mm !important;
+    height: 90mm !important;
     background-image: url('../vaidehisilaicenterlogo.jpeg') !important;
     background-size: contain !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
-    opacity: 0.05 !important;
+    opacity: 0.04 !important;
     z-index: 1 !important;
     display: block !important;
   }
@@ -469,14 +473,14 @@ body.cert-viewer-body {
   }
 
   .cert-logo {
-    height: 36mm !important;
-    max-height: 36mm !important;
+    height: 28mm !important;
+    max-height: 28mm !important;
     margin-bottom: 2mm !important;
     display: block !important;
   }
 
   .cert-msme {
-    font-size: 4.8mm !important;
+    font-size: 4.2mm !important;
     letter-spacing: 0.2mm !important;
     color: #0d2f1d !important;
   }
@@ -484,63 +488,63 @@ body.cert-viewer-body {
   .cert-divider-line {
     width: 220mm !important;
     height: 0.6mm !important;
-    margin: 4mm auto !important;
+    margin: 2.5mm auto !important;
     background: linear-gradient(to right, transparent, #d4af37, transparent) !important;
   }
 
   .cert-divider-line::after {
-    font-size: 5.5mm !important;
+    font-size: 5mm !important;
     padding: 0 4mm !important;
     background-color: #fdfbf7 !important;
   }
 
   .cert-title {
-    font-size: 13mm !important;
+    font-size: 11mm !important;
     letter-spacing: 0.6mm !important;
-    margin: 2mm 0 4mm 0 !important;
+    margin: 1.5mm 0 3mm 0 !important;
     color: #0d2f1d !important;
   }
 
   .cert-body {
-    font-size: 6.2mm !important;
-    line-height: 1.8 !important;
+    font-size: 5.5mm !important;
+    line-height: 1.65 !important;
     max-width: 250mm !important;
   }
 
   .cert-student-name {
-    font-size: 13.5mm !important;
+    font-size: 11.5mm !important;
     border-bottom: 0.5mm solid #d4af37 !important;
     padding-bottom: 0.5mm !important;
-    margin: 3mm 0 !important;
+    margin: 2mm 0 !important;
     color: #0d2f1d !important;
   }
 
   .cert-course-name {
-    font-size: 9.2mm !important;
-    margin: 2.5mm 0 !important;
+    font-size: 8.2mm !important;
+    margin: 1.5mm 0 !important;
     color: #0d2f1d !important;
   }
 
   .cert-dates-grade {
-    margin-top: 2.5mm !important;
+    margin-top: 1.5mm !important;
   }
 
   .cert-footer {
-    padding: 0 10mm !important;
-    margin-top: 6mm !important;
+    padding: 0 4mm !important;
+    margin-top: 3mm !important;
   }
 
   .cert-stamp-svg {
-    width: 32mm !important;
-    height: 32mm !important;
+    width: 26mm !important;
+    height: 26mm !important;
   }
 
   .cert-signature-container {
-    width: 70mm !important;
+    width: 60mm !important;
   }
 
   .cert-signature-cursive {
-    font-size: 10mm !important;
+    font-size: 8.5mm !important;
     margin-bottom: 0.8mm !important;
   }
 
@@ -550,10 +554,10 @@ body.cert-viewer-body {
   }
 
   .cert-sig-title {
-    font-size: 4.5mm !important;
+    font-size: 4mm !important;
   }
 
   .cert-sig-subtitle {
-    font-size: 3.8mm !important;
+    font-size: 3.4mm !important;
   }
 }
