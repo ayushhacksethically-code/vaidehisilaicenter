@@ -138,7 +138,7 @@ body.cert-viewer-body {
   border: 2cqw double var(--primary-color);
   outline: 0.25cqw solid var(--gold-metallic);
   outline-offset: -1.3cqw;
-  padding: 3.5cqw 4.5cqw 3.5cqw 4.5cqw;
+  padding: 3cqw 4.5cqw 4cqw 4.5cqw;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -155,11 +155,11 @@ body.cert-viewer-body {
 .cert-card-preview::before {
   content: '';
   position: absolute;
-  top: 50%;
+  top: 48%; /* 50% se thoda upar kiya taaki niche na kategi */
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 32cqw;
-  height: 32cqw;
+  width: 34cqw; /* Size ko layout ke hisab se thoda balance karein */
+  height: 34cqw;
   background-image: url('../vaidehisilaicenterlogo.jpeg');
   background-size: contain;
   background-position: center;
@@ -320,6 +320,8 @@ body.cert-viewer-body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 1.5cqw; /* Isse stamp border se thoda upar uth jayega */
+  margin-left: 1.5cqw;  /* Isse inner double border se thoda andar shift hoga */
 }
 
 .cert-stamp-svg {
@@ -537,6 +539,8 @@ body.cert-viewer-body {
   .cert-stamp-svg {
     width: 26mm !important;
     height: 26mm !important;
+    margin-bottom: 4mm !important; /* Print layout mein bhi upar push karega */
+    margin-left: 4mm !important;
   }
 
   .cert-signature-container {
