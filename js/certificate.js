@@ -65,14 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Go back to Admin page
+  // Go back to Courses page
   if (btnBack) {
     btnBack.addEventListener("click", () => {
-      // If history exists, go back, else redirect to admin.html
+      // If history exists, go back, else redirect to courses.html
       if (window.history.length > 1) {
         window.history.back();
       } else {
-        window.location.href = "admin.html";
+        window.location.href = "courses.html";
       }
     });
   }
